@@ -8,7 +8,9 @@ OBJs = $(SRCs:.c=.o)
 
 NAME = libftprintf.a
 
-all: $(OBJs)
+all: $(NAME)
+
+$(NAME): $(OBJs)
 	ar rcs $(NAME) $(OBJs)
 
 %.o: %.c ft_printf.h
@@ -22,4 +24,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re
