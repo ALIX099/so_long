@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -lmlx -lXext -lX11
 
 EXNAME = so_long
 
@@ -12,7 +12,7 @@ PRINTF = $(PRINTF_DIR)/libprintf.a
 
 LIBS = $(LIBFT) $(PRINTF)
 
-SRCS = mandatory/main.c \
+SRCS = mandatory/so_long.c \
        mandatory/game.c \
        mandatory/map.c \
        mandatory/render.c \

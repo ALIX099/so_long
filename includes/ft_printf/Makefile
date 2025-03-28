@@ -1,6 +1,6 @@
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror 
 
 SRCs = ft_hex.c  ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_print_addr.c ft_putnbr_unsigned.c
 
