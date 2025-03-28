@@ -12,11 +12,11 @@ PRINTF = $(PRINTF_DIR)/libprintf.a
 
 LIBS = $(LIBFT) $(PRINTF)
 
-SRCS = src/main.c \
-       src/game.c \
-       src/map.c \
-       src/render.c \
-       src/utils.c
+SRCS = mandatory/main.c \
+       mandatory/game.c \
+       mandatory/map.c \
+       mandatory/render.c \
+       mandatory/utils.c
 
 OBJS = $(SRCS:.c=.o)
 
