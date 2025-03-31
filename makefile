@@ -1,22 +1,21 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -lmlx -lXext -lX11
+CFLAGS = -Wall -Wextra -Werror -Imlx
 
 EXNAME = so_long
 
 LIBFT_DIR = includes/libft
 PRINTF_DIR = includes/ft_printf
+GET_NEXT_DIR= includes/get_next_line
 
 LIBFT = $(LIBFT_DIR)/libft.a
-PRINTF = $(PRINTF_DIR)/libprintf.a
+PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 LIBS = $(LIBFT) $(PRINTF)
 
 SRCS = mandatory/so_long.c \
-       mandatory/game.c \
-       mandatory/map.c \
-       mandatory/render.c \
-       mandatory/utils.c
+	   mandatory/parsing.c \
+	   mandatory/load_map.c 
 
 OBJS = $(SRCS:.c=.o)
 
