@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 06:33:35 by abouknan          #+#    #+#             */
-/*   Updated: 2025/03/31 07:06:29 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/03/31 07:08:04 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	load_map(t_game *game, char *filename)
 	char	*joined_str;
 	int		fd;
 	char	*line;
-	char	*temp;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
