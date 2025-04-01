@@ -13,7 +13,7 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 LIBS = $(LIBFT) $(PRINTF)
 
 SRCS = mandatory/so_long.c \
-       mandatory/parsing.c \
+       mandatory/parsing_map.c \
        mandatory/map.c \
        $(GET_NEXT_DIR)/get_next_line.c \
        $(GET_NEXT_DIR)/get_next_line_utils.c

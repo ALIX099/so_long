@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 02:42:10 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/01 03:39:48 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ typedef struct s_game
 int			ber_parsing(char *str);
 void		load_map(t_game *game, char *filename);
 void		check_map(t_game *game);
+void		check_map_y(t_game *game);
+void		check_map_x(t_game *game);
 
 #endif
