@@ -43,7 +43,7 @@ int	ber_parsing(char *str)
 	if (len < 5)
 		return (0);
 	if (filename[len - 1] == 'r' && filename[len - 2] == 'e' && filename[len
-			- 3] == 'b' && filename[len - 4] == '.' && filename[len - 5] != ' ')
+		- 3] == 'b' && filename[len - 4] == '.' && filename[len - 5] != ' ')
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 06:57:21 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 03:53:34 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/01 03:57:15 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	main(int ac, char **av)
 		return (write(2, RED "Incorrect Args Or Map File Is Wrong !\n", 45), 1);
 	load_map(&game, av[1]);
 	check_map(&game);
-	check_map_y(&game);
-	check_map_x(&game);
 	// check the file name map .ber and texture .xpm
 	// check the file permission using open function .ber and .xpm and clossiha
 	// get the width and the hight of this map by reading the map using gnl

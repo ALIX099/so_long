@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 06:33:35 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 03:50:48 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/01 03:57:41 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	load_map(t_game *game, char *name)
 	if (!game->map || game->map[0] == NULL)
 		exit(ft_printf(RED "Error: Map Is Empty Or Invalid!\n"));
 	game->map_x = ft_strlen(game->map[0]);
+	check_map_y(game);
+	check_map_x(game);
 }
 
 void	check_map(t_game *game)
