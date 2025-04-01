@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:07:23 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 03:53:18 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/01 04:32:10 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,41 @@ void	check_map_x(t_game *game)
 	int	i;
 
 	i = 0;
+	game->map_x = ft_strlen(game->map[0]);
 	while (i < game->map_x)
 	{
 		if (game->map[0][i] != '1' || game->map[game->map_y - 1][i] != '1')
 			return (ft_printf(RED "Error: In Map Walls!\n"),
 				split_free(game->map, count_splited(game->map)), exit(1));
+		i++;
+	}
+}
+
+void	check_newline(char *map)
+{
+	int	i;
+
+	i = 0;
+	if (map[0] == '\n')
+	{
+		free(map);
+		ft_printf(RED "Error: In Newline!\n");
+		exit(1);
+	}
+	else if (map[ft_strlen(map) - 1] == '\n')
+	{
+		free(map);
+		ft_printf(RED "Error: In Newline!\n");
+		exit(1);
+	}
+	while (map[i + 1])
+	{
+		if (map[i] == '\n' && map[i + 1] == '\n')
+		{
+			free(map);
+			ft_printf(RED "Error: In Newline!\n");
+			exit(1);
+		}
 		i++;
 	}
 }
