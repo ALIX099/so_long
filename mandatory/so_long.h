@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 01:52:13 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/01 02:42:10 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_game
 	int		collectible_count;
 	int		exit_count;
 	int		move_count;
-	int		height;
-	int		width;
+	int		map_x;
+	int		map_y;
 	int		player_n;
 }			t_game;
 

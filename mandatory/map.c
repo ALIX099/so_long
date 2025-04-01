@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 06:33:35 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 02:13:40 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/01 02:46:07 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	load_map(t_game *game, char *name)
 	int		fd;
 	char	*line;
 
+	game->map_x = 0;
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
 		return (ft_printf(RED "Error: Could not open map file!\n"), exit(1));
@@ -41,6 +42,7 @@ void	load_map(t_game *game, char *name)
 	{
 		joined_str = ft_strjoin(joined_str, line);
 		free(line);
+		game->map_x++;
 		line = get_next_line(fd);
 	}
 	close(fd);
@@ -48,6 +50,7 @@ void	load_map(t_game *game, char *name)
 	free(joined_str);
 	if (!game->map || game->map[0] == NULL)
 		exit(ft_printf(RED "Error: Map Is Empty Or Invalid!\n"));
+	game->map_y = ft_strlen(game->map[0]) - 1;
 }
 
 void	check_map(t_game *game)
