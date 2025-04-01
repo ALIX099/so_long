@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:07:23 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 04:32:10 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/01 04:37:17 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,12 @@ void	check_newline(char *map)
 	int	i;
 
 	i = 0;
-	if (map[0] == '\n')
+	if (!map)
 	{
-		free(map);
-		ft_printf(RED "Error: In Newline!\n");
+		ft_printf(RED "Error: Map Is Empty!\n");
 		exit(1);
 	}
-	else if (map[ft_strlen(map) - 1] == '\n')
+	if (map[ft_strlen(map) - 1] == '\n')
 	{
 		free(map);
 		ft_printf(RED "Error: In Newline!\n");
