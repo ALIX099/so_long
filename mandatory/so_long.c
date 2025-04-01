@@ -20,14 +20,14 @@ int	main(int ac, char **av)
 		return (write(2, RED "Incorrect Args Or Map File Is Wrong !\n", 45), 1);
 	load_map(&game, av[1]);
 	check_map(&game);
-		// check the file name map .ber and texture .xpm
-		// check the file permission using open function .ber and .xpm and clossiha
-		// get the width and the hight of this map by reading the map using gnl
-		// check the map if valid (characters : 1 0 P E C)
-		// open the window using h and w
-		// put your images in the window using mlx functions like mlx_put_image
-		// your design and setting movment of the player and enemy
-		// free the resources and destroy the window
-		// finish
-		return (0);
+	// check the file name map .ber and texture .xpm
+	// check the file permission using open function .ber and .xpm and clossiha
+	// get the width and the hight of this map by reading the map using gnl
+	// check the map if valid (characters : 1 0 P E C)
+	// open the window using h and w
+	// put your images in the window using mlx functions like mlx_put_image
+	// your design and setting movment of the player and enemy
+	// free the resources and destroy the window
+	// finish
+	return (0);
 }

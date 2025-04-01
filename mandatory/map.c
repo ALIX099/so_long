@@ -12,9 +12,9 @@
 
 #include "so_long.h"
 
-char	**split_free(char **s, int i);
-static int		count_chars(char **map, char c);
-static int		is_valid_map(char **map);
+char		**split_free(char **s, int i);
+static int	count_chars(char **map, char c);
+static int	is_valid_map(char **map);
 
 int	count_splited(char **str)
 {
@@ -69,7 +69,7 @@ void	check_map(t_game *game)
 		{
 			if (game->map[i][j] == 'P')
 			{
-				game->player_x = j; 
+				game->player_x = j;
 				game->player_y = i;
 			}
 			j++;
