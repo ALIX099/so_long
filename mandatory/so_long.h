@@ -6,46 +6,46 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/03/31 06:49:25 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:52:13 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SO_LONG_H
+#ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../includes/ft_printf/ft_printf.h"
-#include "../includes/get_next_line/get_next_line_bonus.h"
-#include "../includes/libft/libft.h"
-#include "../includes/minilibx-linux/mlx.h"
+# include "../includes/ft_printf/ft_printf.h"
+# include "../includes/get_next_line/get_next_line_bonus.h"
+# include "../includes/libft/libft.h"
+# include "../includes/minilibx-linux/mlx.h"
 
-# define RED 				"\033[1;31m"
+# define RED "\033[1;31m"
 
 typedef struct s_game
 {
-	void			*img;
-	void			*wall;
-	void			*back;
-	void			*exit;
-	void			*player;
-	void			*coin;
-	char			*addr;
-	void			*mlx;
-	void			*mlx_win;
-	char			**map;
-	int				player_x;
-	int				e_y;
-	int				e_x;
-	int				player_y;
-	unsigned int	c;
-	unsigned int	exit_count;
-	int				move_count;
-	int				height;
-	int				width;
-	int				player_n;
-}					t_game;
+	void	*img;
+	void	*wall;
+	void	*back;
+	void	*exit;
+	void	*player;
+	void	*coin;
+	char	*addr;
+	void	*mlx;
+	void	*mlx_win;
+	char	**map;
+	int		player_x;
+	int		e_y;
+	int		e_x;
+	int		player_y;
+	int		collectible_count;
+	int		exit_count;
+	int		move_count;
+	int		height;
+	int		width;
+	int		player_n;
+}			t_game;
 
-
-int	ber_parsing(char *str);
-
+int			ber_parsing(char *str);
+void		load_map(t_game *game, char *filename);
+void		check_map(t_game *game);
 
 #endif
