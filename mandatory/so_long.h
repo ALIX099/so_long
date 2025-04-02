@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 06:39:16 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/02 07:29:27 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_game
 	void	*player;
 	void	*coin;
 	char	*addr;
-	void	*mlx;
+	void	*mlx_init;
 	void	*mlx_win;
 	char	**map;
 	int		player_x;
@@ -52,5 +52,6 @@ void		check_map_x(t_game *game);
 void		check_newline(char *map);
 void		check_accesses(t_game *game);
 void		get_e_x_e_y(t_game *game);
+void		init_mlx(t_game *game);
 
 #endif
