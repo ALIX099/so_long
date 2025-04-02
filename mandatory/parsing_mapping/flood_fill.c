@@ -6,13 +6,13 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 23:25:27 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 05:40:41 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/02 05:49:06 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	flood_fill(t_game *game, int x, int y)
+static void	flood_fill(t_game *game, int x, int y)
 {
 	char	**map;
 
@@ -81,8 +81,6 @@ static int	check_access_c(t_game *game)
 	return (0);
 }
 
-void check_access
-
 static void	get_e_x_e_y(t_game *game)
 {
 	int	x;
@@ -105,4 +103,14 @@ static void	get_e_x_e_y(t_game *game)
 		}
 		y++;
 	}
+}
+
+void check_accesses(t_game *game)
+{
+    int result;
+    flood_fill(game, player_x, player_y);
+    get_e_x_e_y(game);
+    result = check_access_e(game, game->e_x, game->e_y);
+    if (!result)
+        return(split_free(game->map, count_splited(game->map)), ft_printf(RED"The Exit is Not accessible\n"), exit(1));
 }
