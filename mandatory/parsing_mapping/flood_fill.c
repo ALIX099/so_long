@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 23:25:27 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 07:00:33 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/02 07:10:33 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	check_access_c(t_game *game)
 	return (found);
 }
 
-void	return_to_init(t_game *game)
+static void	return_to_init(t_game *game)
 {
 	int		x;
 	int		y;
