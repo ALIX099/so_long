@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 04:49:53 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/02 06:39:16 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void		check_map(t_game *game);
 void		check_map_y(t_game *game);
 void		check_map_x(t_game *game);
 void		check_newline(char *map);
+void	check_accesses(t_game *game);
+void	get_e_x_e_y(t_game *game);
 
 #endif

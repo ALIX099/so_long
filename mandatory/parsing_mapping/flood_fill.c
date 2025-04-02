@@ -6,11 +6,14 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 23:25:27 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 05:49:06 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/02 07:00:33 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+char		**split_free(char **s, int i);
+int			count_splited(char **str);
 
 static void	flood_fill(t_game *game, int x, int y)
 {
@@ -58,9 +61,11 @@ static int	check_access_c(t_game *game)
 {
 	int	x;
 	int	y;
+	int	found;
 
 	x = 0;
 	y = 0;
+	found = 0;
 	while (y < game->map_y)
 	{
 		x = 0;
@@ -68,49 +73,54 @@ static int	check_access_c(t_game *game)
 		{
 			if (game->map[y][x] == 'C')
 				return (0);
-			else if ((game->map[y][x] == 'Q') && game->map[y + 1][x] == 'V'
-				|| game->map[y - 1][x] == 'V' || game->map[y][x + 1] == 'V'
-				|| game->map[y][x - 1] == 'V' || game->map[y + 1][x] == 'Q'
-				|| game->map[y - 1][x] == 'Q' || game->map[y][x + 1] == 'Q'
-				|| game->map[y][x - 1] == 'Q' || game->map[y + 1][x] == 'D'
-				|| game->map[y - 1][x] == 'D' || game->map[y][x + 1] == 'D'
-				|| game->map[y][x - 1] == 'D')
-				return (1);
+			if (game->map[y][x] == 'Q')
+				found = 1;
+			x++;
 		}
+		y++;
 	}
-	return (0);
+	return (found);
 }
 
-static void	get_e_x_e_y(t_game *game)
+void	return_to_init(t_game *game)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	char	**map;
 
 	x = 0;
 	y = 0;
+	map = game->map;
 	while (y < game->map_y)
 	{
 		x = 0;
 		while (x < game->map_x)
 		{
-			if (game->map[y][x] == 'E')
-			{
-				game->e_x = x;
-				game->e_y = y;
-				return ;
-			}
+			if (map[y][x] == 'Q')
+				map[y][x] = 'C';
+			else if (map[y][x] == 'D')
+				map[y][x] = 'P';
+			else if (map[y][x] == 'V')
+				map[y][x] = '0';
 			x++;
 		}
 		y++;
 	}
 }
 
-void check_accesses(t_game *game)
+void	check_accesses(t_game *game)
 {
-    int result;
-    flood_fill(game, player_x, player_y);
-    get_e_x_e_y(game);
-    result = check_access_e(game, game->e_x, game->e_y);
-    if (!result)
-        return(split_free(game->map, count_splited(game->map)), ft_printf(RED"The Exit is Not accessible\n"), exit(1));
+	int	result;
+
+	flood_fill(game, game->player_x, game->player_y);
+	get_e_x_e_y(game);
+	result = check_access_e(game, game->e_x, game->e_y);
+	if (!result)
+		return (split_free(game->map, count_splited(game->map)),
+			ft_printf(RED "The Exit is Not accessible\n"), exit(1));
+	result = check_access_c(game);
+	if (!result)
+		return (split_free(game->map, count_splited(game->map)),
+			ft_printf(RED "An Collectible is Not accessible\n"), exit(1));
+	return_to_init(game);
 }

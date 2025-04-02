@@ -16,6 +16,7 @@ SRCS = mandatory/so_long.c \
        mandatory/parsing_mapping/ber_map.c \
        mandatory/parsing_mapping/map.c \
 	   mandatory/parsing_mapping/flood_fill.c \
+	   mandatory/mlx.c \
        $(GET_NEXT_DIR)/get_next_line.c \
        $(GET_NEXT_DIR)/get_next_line_utils.c
 
