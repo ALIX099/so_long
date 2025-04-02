@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_map.c                                      :+:      :+:    :+:   */
+/*   ber_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:07:23 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 04:44:41 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/02 00:28:04 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 char		**split_free(char **s, int i);
 int			count_splited(char **str);
@@ -43,7 +43,7 @@ int	ber_parsing(char *str)
 	if (len < 5)
 		return (0);
 	if (filename[len - 1] == 'r' && filename[len - 2] == 'e' && filename[len
-		- 3] == 'b' && filename[len - 4] == '.' && filename[len - 5] != ' ')
+			- 3] == 'b' && filename[len - 4] == '.' && filename[len - 5] != ' ')
 		return (1);
 	return (0);
 }

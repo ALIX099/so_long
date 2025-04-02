@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/01 04:30:33 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/02 04:49:53 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../includes/ft_printf/ft_printf.h"
 # include "../includes/get_next_line/get_next_line_bonus.h"
 # include "../includes/libft/libft.h"
-# include "../includes/minilibx-linux/mlx.h"
+# include "../includes/.minilibx-linux/mlx.h"
 
 # define RED "\033[1;31m"
 
