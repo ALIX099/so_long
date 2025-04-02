@@ -13,10 +13,10 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "../includes/.minilibx-linux/mlx.h"
 # include "../includes/ft_printf/ft_printf.h"
 # include "../includes/get_next_line/get_next_line_bonus.h"
 # include "../includes/libft/libft.h"
-# include "../includes/.minilibx-linux/mlx.h"
 
 # define RED "\033[1;31m"
 
@@ -50,7 +50,7 @@ void		check_map(t_game *game);
 void		check_map_y(t_game *game);
 void		check_map_x(t_game *game);
 void		check_newline(char *map);
-void	check_accesses(t_game *game);
-void	get_e_x_e_y(t_game *game);
+void		check_accesses(t_game *game);
+void		get_e_x_e_y(t_game *game);
 
 #endif

@@ -6,12 +6,11 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 02:00:54 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 06:38:19 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/02 07:07:38 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	get_e_x_e_y(t_game *game)
 {
