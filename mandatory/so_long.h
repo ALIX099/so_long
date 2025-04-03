@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/03 06:54:30 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:24:26 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 typedef struct s_game
 {
-	void	*img;
 	void	*wall;
 	void	*back;
 	void	*exit_opened;
@@ -56,5 +55,7 @@ void		check_accesses(t_game *game);
 void		get_e_x_e_y(t_game *game);
 void		init_mlx(t_game *game, int w, int h);
 void		error_handling(char *message, t_game *game);
+void		put_in_map(t_game *game, char c, int x, int y);
+void		put_image_in_map(t_game *game);
 
 #endif
