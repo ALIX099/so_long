@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 07:29:27 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/03 06:54:30 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct s_game
 	void	*img;
 	void	*wall;
 	void	*back;
-	void	*exit;
+	void	*exit_opened;
+	void	*exit_closed;
 	void	*player;
 	void	*coin;
 	char	*addr;
@@ -47,11 +48,13 @@ typedef struct s_game
 int			ber_parsing(char *str);
 void		load_map(t_game *game, char *filename);
 void		check_map(t_game *game);
+int			count_splited(char **str);
 void		check_map_y(t_game *game);
 void		check_map_x(t_game *game);
 void		check_newline(char *map);
 void		check_accesses(t_game *game);
 void		get_e_x_e_y(t_game *game);
-void		init_mlx(t_game *game);
+void		init_mlx(t_game *game, int w, int h);
+void		error_handling(char *message, t_game *game);
 
 #endif

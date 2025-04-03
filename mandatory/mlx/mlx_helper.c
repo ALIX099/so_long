@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.c                                           :+:      :+:    :+:   */
+/*   mlx_helper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 07:17:52 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 07:18:08 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/03 06:58:41 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ void	get_e_x_e_y(t_game *game)
 		}
 		y++;
 	}
+}
+
+void	error_handling(char *message, t_game *game)
+{
+	ft_printf(RED "%s", message);
+	return (split_free(game->map, count_splited(game->map)), exit(1));
 }

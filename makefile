@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx #-lmlx -lXext -lX11
+CFLAGS = -Wall -Wextra -Werror -Imlx
 
 EXNAME = so_long
 
@@ -10,7 +10,6 @@ MLX_DIR = includes/.minilibx-linux
 
 LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
-MLX = $(MLX_DIR)/libmlx.a
 
 LIBS = $(LIBFT) $(PRINTF) $(MLX)
 
@@ -34,7 +33,7 @@ $(PRINTF):
 	make -C $(PRINTF_DIR)
 
 $(EXNAME): $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(EXNAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -L$(MLX_DIR) -lmlx -L/usr/X11/lib -lXext -lX11 -o $(EXNAME)
 
 clean:
 	make clean -C $(LIBFT_DIR)
