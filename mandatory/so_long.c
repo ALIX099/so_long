@@ -6,12 +6,19 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 06:57:21 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/03 11:26:13 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 07:14:02 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+int	handle_destroy(int keycode ,t_game *game)
+{
+	(void)keycode;
+	close_window_and_free(game);
+	exit(0);
+	return (0);
+}
 int	main(int ac, char **av)
 {
 	int		w;
@@ -21,15 +28,14 @@ int	main(int ac, char **av)
 	w = 64;
 	h = 64;
 	if (ac != 2 || !ber_parsing(av[1]))
-		return (write(2, RED "Incorrect Args Or Map File Is Wrong !\n", 45), 1);
+		return (write(2, RED "Error\nIncorrect Args Or Map File Is Wrong !\n",
+				45), 1);
 	load_map(&game, av[1]);
 	check_map(&game);
 	check_accesses(&game);
 	init_mlx(&game, w, h);
 	put_image_in_map(&game);
-	// open the window using h and w
-	// put your images in the window using mlx functions like mlx_put_image
-	// your design and setting movment of the player and enemy
-	// free the resources and destroy the window
-	return (0);
+	mlx_key_hook(game.mlx_win, key_code, &game);
+	mlx_hook(game.mlx_win, 17, 0, &handle_destroy, &game);
+	mlx_loop(game.mlx_init);
 }

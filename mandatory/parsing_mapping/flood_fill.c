@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 23:25:27 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 07:10:33 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 02:38:10 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,10 @@ void	check_accesses(t_game *game)
 	result = check_access_e(game, game->e_x, game->e_y);
 	if (!result)
 		return (split_free(game->map, count_splited(game->map)),
-			ft_printf(RED "The Exit is Not accessible\n"), exit(1));
+			ft_printf(RED "Error\nThe Exit is Not accessible\n"), exit(1));
 	result = check_access_c(game);
 	if (!result)
 		return (split_free(game->map, count_splited(game->map)),
-			ft_printf(RED "An Collectible is Not accessible\n"), exit(1));
+			ft_printf(RED "Error\nA Collectible is Not accessible\n"), exit(1));
 	return_to_init(game);
 }

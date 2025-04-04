@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 06:33:35 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/02 00:25:18 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 02:35:06 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	load_map(t_game *game, char *name)
 	game->map_y = 0;
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
-		return (ft_printf(RED "Error: Could not open map file!\n"), exit(1));
+		return (ft_printf(RED "Error\nCould not open map file!\n"), exit(1));
 	joined_str = NULL;
 	line = get_next_line(fd);
 	while (line)
@@ -50,7 +50,7 @@ void	load_map(t_game *game, char *name)
 	game->map = ft_split(joined_str, '\n');
 	free(joined_str);
 	if (!game->map || game->map[0] == NULL)
-		exit(ft_printf(RED "Error: Map Is Invalid!\n"));
+		exit(ft_printf(RED "Error\nMap Is Invalid!\n"));
 	check_map_y(game);
 	check_map_x(game);
 }
@@ -81,7 +81,7 @@ void	check_map(t_game *game)
 	if (!is_valid_map(game->map) || game->exit_count != 1 || game->player_n != 1
 		|| game->collectible_count < 1)
 		return (split_free(game->map, count_splited(game->map)),
-			ft_printf(RED "Invalid Map!\n"), exit(1));
+			ft_printf(RED "Error\nInvalid Map!\n"), exit(1));
 }
 
 static int	count_chars(char **map, char c)
