@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 06:57:21 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 10:06:06 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 12:44:31 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	check_accesses(&game);
 	init_mlx(&game, w, h);
 	put_image_in_map(&game);
-	mlx_key_hook(game.mlx_win, key_code, &game);
+	mlx_hook(game.mlx_win, 2, 1L << 0, key_code, &game);
 	mlx_hook(game.mlx_win, 17, 0, handle_destroy, &game);
 	mlx_loop(game.mlx_init);
 }
