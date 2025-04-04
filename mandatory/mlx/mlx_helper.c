@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 07:17:52 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 07:14:59 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 07:54:18 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	error_handling(char *message, t_game *game)
 
 void	close_window_and_free(t_game *game)
 {
-	if (!game || !game->mlx_init)
+	if (!game)
 		return ;
 	if (game->coin)
 		mlx_destroy_image(game->mlx_init, game->coin);
@@ -61,8 +61,11 @@ void	close_window_and_free(t_game *game)
 		mlx_destroy_image(game->mlx_init, game->player);
 	if (game->mlx_win)
 		mlx_destroy_window(game->mlx_init, game->mlx_win);
-	mlx_destroy_display(game->mlx_init);
-	free(game->mlx_init);
+	if (game->mlx_init)
+	{
+		mlx_destroy_display(game->mlx_init);
+		free(game->mlx_init);
+	}
 	if (game->map)
 		split_free(game->map, count_splited(game->map));
 }

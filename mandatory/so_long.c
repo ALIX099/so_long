@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 06:57:21 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 07:14:02 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 07:57:18 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	handle_destroy(int keycode ,t_game *game)
 {
 	(void)keycode;
-	close_window_and_free(game);
+		mlx_destroy_display(game->mlx_init);
+		free(game->mlx_init);
+	if (game->map)
+		split_free(game->map, count_splited(game->map));
 	exit(0);
 	return (0);
 }
