@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:07:23 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 09:38:42 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 14:00:28 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	check_map_y(t_game *game)
 	while (i < game->map_y)
 	{
 		if (ft_strlen(game->map[i]) != ft_strlen(game->map[0]))
-			return (ft_printf(RED "Error\nMap Walls!\n"),
-				split_free(game->map, count_splited(game->map)), exit(1));
+			return (ft_printf(RED "Error\nMap Walls!\n"), split_free(game->map,
+					count_splited(game->map)), exit(1));
 		if (game->map[i][0] != '1' || game->map[i][ft_strlen(game->map[0])
 			- 1] != '1')
-			return (ft_printf(RED "Error\nMap Walls!\n"),
-				split_free(game->map, count_splited(game->map)), exit(1));
+			return (ft_printf(RED "Error\nMap Walls!\n"), split_free(game->map,
+					count_splited(game->map)), exit(1));
 		i++;
 	}
 }
@@ -75,8 +75,8 @@ void	check_map_x(t_game *game)
 	while (i < game->map_x)
 	{
 		if (game->map[0][i] != '1' || game->map[game->map_y - 1][i] != '1')
-			return (ft_printf(RED "Error\nMap Walls!\n"),
-				split_free(game->map, count_splited(game->map)), exit(1));
+			return (ft_printf(RED "Error\nMap Walls!\n"), split_free(game->map,
+					count_splited(game->map)), exit(1));
 		i++;
 	}
 }
@@ -87,10 +87,9 @@ void	check_newline(char *map)
 
 	i = 0;
 	if (!map)
-	{
-		ft_printf(RED "Error\nMap Is Empty!\n");
-		exit(1);
-	}
+		return (ft_printf(RED "Error\nEmpty!\n"), exit(1));
+	if (map[0] == '\n')
+		return (free(map), ft_printf(RED "Error\nNewline!\n"), exit(1));
 	if (map[ft_strlen(map) - 1] == '\n')
 	{
 		free(map);
