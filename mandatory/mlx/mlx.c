@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 02:00:54 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 10:46:25 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 11:17:23 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,8 @@ void	move_player(t_game *game, int x, int y)
 		game->player_y = new_y;
 		game->map[game->player_y][game->player_x] = 'P';
 		put_in_map(game, 'P', new_x * 40, new_y * 40);
+		game->move_count++;
+		ft_printf(YELLOW "%d" CYAN " : " YELLOW "Move\n", game->move_count);
 	}
 	reach_exit(game, new_x, new_y);
-	game->move_count++;
-	ft_printf(YELLOW "%d" CYAN " : " YELLOW "Move\n", game->move_count);
 }
