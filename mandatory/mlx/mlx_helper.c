@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 07:17:52 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 07:54:18 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 09:42:41 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	error_handling(char *message, t_game *game)
 
 void	close_window_and_free(t_game *game)
 {
-	if (!game)
-		return ;
+	if (game->mlx_win)
+		mlx_destroy_window(game->mlx_init, game->mlx_win);
 	if (game->coin)
 		mlx_destroy_image(game->mlx_init, game->coin);
 	if (game->exit_closed)
@@ -59,8 +59,6 @@ void	close_window_and_free(t_game *game)
 		mlx_destroy_image(game->mlx_init, game->back);
 	if (game->player)
 		mlx_destroy_image(game->mlx_init, game->player);
-	if (game->mlx_win)
-		mlx_destroy_window(game->mlx_init, game->mlx_win);
 	if (game->mlx_init)
 	{
 		mlx_destroy_display(game->mlx_init);
@@ -72,7 +70,7 @@ void	close_window_and_free(t_game *game)
 
 int	key_code(int key, t_game *game)
 {
-	if (key == KEY_ESC) // || key == KEY_Q
+	if (key == KEY_ESC || key == KEY_Q)
 		return (close_window_and_free(game),
 			ft_printf(CYAN "You Exit the Game!\n"), exit(0), 0);
 	else if (key == KEY_W || key == KEY_UP)

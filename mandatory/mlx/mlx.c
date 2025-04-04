@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 02:00:54 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 06:48:10 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 09:50:32 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	init_mlx(t_game *game, int w, int h)
 	game->mlx_init = mlx_init();
 	if (!game->mlx_init)
 		return (error_handling("Mlx Can't be initialized!", game));
-	game->mlx_win = mlx_new_window(game->mlx_init, game->map_x * 64, game->map_y
-			* 64, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx_init, game->map_x * 40, game->map_y
+			* 40, "so_long");
 	if (!game->mlx_win)
 		return (error_handling("Mlx Window Can't Open!", game));
 	game->coin = mlx_xpm_file_to_image(game->mlx_init, "textures/coin.xpm", &w,
@@ -35,8 +35,10 @@ void	init_mlx(t_game *game, int w, int h)
 			&h);
 	if (!game->coin || !game->player || !game->exit_closed || !game->exit_opened
 		|| !game->wall || !game->back)
-		return (free(game->mlx_win), error_handling("Mlx Xpm File To Image",
-				game));
+	{
+		close_window_and_free(game);
+		exit(ft_printf(RED "Error\nMlx Xpm File To Image\n"));
+	}
 }
 
 void	put_in_map(t_game *game, char c, int x, int y)
@@ -65,15 +67,30 @@ void	put_image_in_map(t_game *game)
 
 	x = 0;
 	y = 0;
-	while (y < game->map_y)
+	while (game->map[y])
 	{
 		x = 0;
-		while (x < game->map_x)
+		while (game->map[y][x])
 		{
-			put_in_map(game, game->map[y][x], x * 64, y * 64);
+			put_in_map(game, game->map[y][x], x * 40, y * 40);
 			x++;
 		}
 		y++;
+	}
+}
+
+static void	reach_exit(t_game *game, int new_x, int new_y)
+{
+	if (game->map[new_y][new_x] == 'E')
+	{
+		if (!game->collectible_count)
+		{
+			close_window_and_free(game);
+			ft_printf(GREEN "You Won The Game!\n");
+			exit(0);
+		}
+		else
+			ft_printf(RED "Collect The Coins Before Exitting!\n");
 	}
 }
 
@@ -92,23 +109,13 @@ void	move_player(t_game *game, int x, int y)
 			game->collectible_count--;
 		if (game->collectible_count == 0)
 			mlx_put_image_to_window(game->mlx_init, game->mlx_win,
-				game->exit_opened, game->e_x * 64, game->e_y * 64);
+				game->exit_opened, game->e_x * 40, game->e_y * 40);
 		game->map[game->player_y][game->player_x] = '0';
-		put_in_map(game, '0', game->player_x * 64, game->player_y * 64);
+		put_in_map(game, '0', game->player_x * 40, game->player_y * 40);
 		game->player_x = new_x;
 		game->player_y = new_y;
 		game->map[game->player_y][game->player_x] = 'P';
-		put_in_map(game, 'P', new_x * 64, new_y * 64);
+		put_in_map(game, 'P', new_x * 40, new_y * 40);
 	}
-	if (game->map[new_y][new_x] == 'E')
-	{
-		if (!game->collectible_count)
-		{
-			close_window_and_free(game);
-			ft_printf(GREEN "You Won The Game!\n");
-			exit(0);
-		}
-		else
-			ft_printf(RED "Collect The Coins Before Exitting!\n");
-	}
+	reach_exit(game, new_x, new_y);
 }

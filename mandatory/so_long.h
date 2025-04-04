@@ -19,21 +19,21 @@
 # include "../includes/libft/libft.h"
 
 # define RED "\033[1;31m"
-# define CYAN				"\033[1;96m"
-# define GREEN				"\033[0;32m"
+# define CYAN "\033[1;96m"
+# define GREEN "\033[0;32m"
 
-# define KEY_W				119
-# define KEY_A				97
-# define KEY_S				115
-# define KEY_D				100
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 
-# define KEY_UP  			65362
-# define KEY_LEFT  			65361
-# define KEY_RIGHT 			65363
-# define KEY_DOWN  			65364
+# define KEY_UP 65362
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_DOWN 65364
 
-# define KEY_Q				113
-# define KEY_ESC  			65307
+# define KEY_Q 113
+# define KEY_ESC 65307
 
 typedef struct s_game
 {
@@ -72,8 +72,8 @@ void		init_mlx(t_game *game, int w, int h);
 void		error_handling(char *message, t_game *game);
 void		put_in_map(t_game *game, char c, int x, int y);
 void		put_image_in_map(t_game *game);
-int 		key_code(int key, t_game *game);
+int			key_code(int key, t_game *game);
 void		move_player(t_game *game, int x, int y);
-void	close_window_and_free(t_game *game);
+void		close_window_and_free(t_game *game);
 
 #endif

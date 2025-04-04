@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:07:23 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 02:37:44 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 09:38:42 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	check_map_x(t_game *game)
 	int	i;
 
 	i = 0;
-	game->map_x = ft_strlen(game->map[0]) - 1;
+	game->map_x = ft_strlen(game->map[0]);
 	while (i < game->map_x)
 	{
 		if (game->map[0][i] != '1' || game->map[game->map_y - 1][i] != '1')
