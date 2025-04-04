@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 02:00:54 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 09:50:32 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:46:25 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	put_image_in_map(t_game *game)
 		}
 		y++;
 	}
+	game->move_count = 0;
 }
 
 static void	reach_exit(t_game *game, int new_x, int new_y)
@@ -85,8 +86,9 @@ static void	reach_exit(t_game *game, int new_x, int new_y)
 	{
 		if (!game->collectible_count)
 		{
+			ft_printf(YELLOW "%d" CYAN " : " YELLOW "Move", ++game->move_count);
 			close_window_and_free(game);
-			ft_printf(GREEN "You Won The Game!\n");
+			print_win_message();
 			exit(0);
 		}
 		else
@@ -118,4 +120,6 @@ void	move_player(t_game *game, int x, int y)
 		put_in_map(game, 'P', new_x * 40, new_y * 40);
 	}
 	reach_exit(game, new_x, new_y);
+	game->move_count++;
+	ft_printf(YELLOW "%d" CYAN " : " YELLOW "Move\n", game->move_count);
 }

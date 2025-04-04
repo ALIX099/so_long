@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 07:17:52 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 09:42:41 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:47:46 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,14 @@ int	key_code(int key, t_game *game)
 	else if (key == KEY_A || key == KEY_LEFT)
 		move_player(game, -1, 0);
 	return (0);
+}
+
+void	print_win_message(void)
+{
+	printf("\n");
+	printf(GREEN "╔════════════════════════════╗\n");
+	printf(GREEN "║" GREEN "   CONGRATULATIONS!   " GREEN "║\n");
+	printf(GREEN "║" GREEN "     YOU WON!        " GREEN "║\n");
+	printf(GREEN "╚════════════════════════════╝\n\n");
+	printf(RESET);
 }

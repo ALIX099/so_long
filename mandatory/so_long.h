@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:54:26 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 05:55:39 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:16:45 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 # include "../includes/libft/libft.h"
 
 # define RED "\033[1;31m"
-# define CYAN "\033[1;96m"
-# define GREEN "\033[0;32m"
+# define YELLOW "\033[1;33m"
+# define GREEN "\033[1;32m"
+# define CYAN "\033[1;36m"
+# define RESET "\033[0m"
 
 # define KEY_W 119
 # define KEY_A 97
@@ -43,7 +45,6 @@ typedef struct s_game
 	void	*exit_closed;
 	void	*player;
 	void	*coin;
-	char	*addr;
 	void	*mlx_init;
 	void	*mlx_win;
 	char	**map;
@@ -75,5 +76,6 @@ void		put_image_in_map(t_game *game);
 int			key_code(int key, t_game *game);
 void		move_player(t_game *game, int x, int y);
 void		close_window_and_free(t_game *game);
+void		print_win_message(void);
 
 #endif

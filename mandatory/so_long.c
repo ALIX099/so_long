@@ -6,17 +6,17 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 06:57:21 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 09:51:35 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/04 10:06:06 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	handle_destroy(int keycode, t_game *game)
+int	handle_destroy(t_game *game)
 {
-	(void)keycode;
 	close_window_and_free(game);
-	exit(1);
+	ft_printf(CYAN "You Exit the Game!\n");
+	exit(0);
 	return (0);
 }
 
@@ -29,8 +29,8 @@ int	main(int ac, char **av)
 	w = 40;
 	h = 40;
 	if (ac != 2 || !ber_parsing(av[1]))
-		return (write(2, RED "Error\nIncorrect Args Or Map File Is Wrong !\n",
-				45), 1);
+		return (write(2, RED "Error\nIncorrect Args Or Map File Is Wrong!\n",
+				50), 1);
 	load_map(&game, av[1]);
 	check_map(&game);
 	check_accesses(&game);
