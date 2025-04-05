@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 14:28:21 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 17:06:35 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 18:49:57 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
 char		**split_free(char **s, int i);
-static int	count_chars(char **map, char c);
 static int	is_valid_map(char **map);
 
 int	count_splited(char **str)
@@ -84,7 +83,7 @@ void	check_map(t_game *game)
 			ft_printf(RED "Error\nInvalid Map!\n"), exit(1));
 }
 
-static int	count_chars(char **map, char c)
+int	count_chars(char **map, char c)
 {
 	int	i;
 	int	j;

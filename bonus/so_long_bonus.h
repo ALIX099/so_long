@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:04 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 17:50:25 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 18:39:49 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int			reach_empty_or_coin(t_game *game, int new_x, int new_y,
 void		reach_enemy(t_game *game, int new_x, int new_y);
 int			ft_strcmp(char *s1, char *s2);
 void		ft_mouve_count(t_game *game);
+int			count_chars(char **map, char c);
 
 #endif

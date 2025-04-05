@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 17:08:56 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 13:23:00 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 18:56:05 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ static void	close_window_and_free_two(t_game *game)
 {
 	if (game->exit_opened)
 		mlx_destroy_image(game->mlx_init, game->exit_opened);
+	if (game->img_killer[3])
+		mlx_destroy_image(game->mlx_init, game->img_killer[3]);
+	if (game->img_killer[4])
+		mlx_destroy_image(game->mlx_init, game->img_killer[4]);
 	if (game->mlx_init)
 	{
 		mlx_destroy_display(game->mlx_init);
