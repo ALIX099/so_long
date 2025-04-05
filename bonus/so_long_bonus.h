@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:04 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 13:58:22 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 17:50:25 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_game
 	int		collectible_count;
 	int		exit_count;
 	int		move_count;
+	int		move_c;
 	int		map_x;
 	int		map_y;
 	int		player_n;
@@ -84,10 +85,10 @@ void		move_player(t_game *game, int x, int y, char *move_name);
 void		close_window_and_free(t_game *game);
 void		print_win_message(void);
 void		print_lose_message(void);
-void		reach_empty_or_coin(t_game *game, int new_x, int new_y,
+int			reach_empty_or_coin(t_game *game, int new_x, int new_y,
 				char *move_name);
 void		reach_enemy(t_game *game, int new_x, int new_y);
 int			ft_strcmp(char *s1, char *s2);
-void		ft_print_movements(t_game *game);
+void		ft_mouve_count(t_game *game);
 
 #endif

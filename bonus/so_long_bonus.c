@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:00 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 14:06:31 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 17:54:48 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,24 @@ int	animation_loop(t_game *game)
 	}
 	return (0);
 }
-void	ft_print_movements(t_game *game)
-{
-	char	*movements;
-	// char	*phrase;
 
-	movements = ft_itoa(game->move_count);
-	// ft_printf("%s %s", "Movements : ", movements);
-	mlx_string_put(game->mlx_init, game->mlx_win, 40, 20, 6000, movements);
-	// free(movements);
-	// free(phrase);
+void	ft_mouve_count(t_game *game)
+{
+	char	*moves;
+
+	moves = ft_itoa(game->move_count + 1);
+	mlx_set_font(game->mlx_init, game->mlx_win, "rk24");
+	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->back, 60,
+		game->map_y * 40);
+	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->back, 92,
+		game->map_y * 40);
+	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->back, 124,
+		game->map_y * 40);
+	mlx_string_put(game->mlx_init, game->mlx_win, 2, game->map_y * 40 + 30,
+		0x557D55, "Move: ");
+	mlx_string_put(game->mlx_init, game->mlx_win, 60, game->map_y * 40 + 30,
+		0x557D55, moves);
+	free(moves);
 }
 
 int	handle_destroy(t_game *game)
@@ -78,6 +86,7 @@ int	main(int ac, char **av)
 	h = 40;
 	game.frame_count = 0;
 	game.killer_frame = 0;
+	game.move_count = 0;
 	if (ac != 2 || !ber_parsing(av[1]))
 		return (write(2, RED "Error\nIncorrect Args Or Map File Is Wrong!\n",
 				50), 1);

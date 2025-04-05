@@ -81,8 +81,8 @@ void	put_in_map(t_game *game, char c, int x, int y)
 		mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->back, x,
 			y);
 	else if (c == 'T')
-		mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->img_killer[game->killer_frame],
-			x, y);
+		mlx_put_image_to_window(game->mlx_init, game->mlx_win,
+			game->img_killer[game->killer_frame], x, y);
 }
 
 int	key_code(int key, t_game *game)
