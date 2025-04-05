@@ -6,11 +6,11 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:04 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/04 13:19:05 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 11:14:33 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SO_LONG_BONUS_H
+#ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
 # include "../includes/.minilibx-linux/mlx.h"
@@ -44,12 +44,14 @@ typedef struct s_game
 	void	*exit_opened;
 	void	*exit_closed;
 	void	*player_down;
-    void	*player_up;
-    void	*player_right;
-    void	*player_left;
-    void	*enemy1;
-    void	*enemy2;
-    void	*enemy3;
+	void	*player_up;
+	void	*player_right;
+	void	*player_left;
+	void	*enemy_one;
+	void	*enemy_two;
+	void	*enemy_three;
+	void	*enemy_four;
+	void	*enemy_five;
 	void	*coin;
 	void	*mlx_init;
 	void	*mlx_win;
@@ -64,6 +66,8 @@ typedef struct s_game
 	int		map_x;
 	int		map_y;
 	int		player_n;
+	int		enemy_x;
+	int		enemy_y;
 }			t_game;
 
 int			ber_parsing(char *str);
@@ -80,8 +84,13 @@ void		error_handling(char *message, t_game *game);
 void		put_in_map(t_game *game, char c, int x, int y);
 void		put_image_in_map(t_game *game);
 int			key_code(int key, t_game *game);
-void		move_player(t_game *game, int x, int y);
+void		move_player(t_game *game, int x, int y, char *move_name);
 void		close_window_and_free(t_game *game);
 void		print_win_message(void);
+void		print_lose_message(void);
+void		reach_empty_or_coin(t_game *game, int new_x, int new_y,
+				char *move_name);
+void		reach_enemy(t_game *game, int new_x, int new_y);
+int			ft_strcmp(char *s1, char *s2);
 
-# endif
+#endif

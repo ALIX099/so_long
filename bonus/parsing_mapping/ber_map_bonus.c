@@ -5,29 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 01:07:23 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 07:31:58 by abouknan         ###   ########.fr       */
+/*   Created: 2025/04/04 13:21:09 by abouknan          #+#    #+#             */
+/*   Updated: 2025/04/05 07:32:08 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 char	**split_free(char **s, int i);
 int		count_splited(char **str);
 
 int	ber_parsing(char *str)
 {
-	char	*filename;
-	int		len;
+	int	len;
 
 	if (!str)
 		return (0);
-	filename = str;
-	len = ft_strlen(filename);
+	len = ft_strlen(str);
 	if (len < 5)
 		return (0);
-	if (filename[len - 1] == 'r' && filename[len - 2] == 'e' && filename[len
-			- 3] == 'b' && filename[len - 4] == '.' && str[len - 5] != '/')
+	if (str[len - 1] == 'r' && str[len - 2] == 'e' && str[len - 3] == 'b'
+		&& str[len - 4] == '.' && str[len - 5] != '/')
 		return (1);
 	return (0);
 }
@@ -73,21 +71,37 @@ void	check_newline(char *map)
 	if (!map)
 		return (ft_printf(RED "Error\nEmpty!\n"), exit(1));
 	if (map[0] == '\n')
-		return (free(map), ft_printf(RED "Error\nNewline!\n"), exit(1));
+		return (free(map), (ft_printf(RED "Error\nNewline!\n"), exit(1)));
 	if (map[ft_strlen(map) - 1] == '\n')
-	{
-		free(map);
-		ft_printf(RED "Error\nNewline!\n");
-		exit(1);
-	}
+		return (free(map), ft_printf(RED "Error\nNewline!\n"), exit(1));
 	while (map[i + 1])
 	{
 		if (map[i] == '\n' && map[i + 1] == '\n')
-		{
-			free(map);
-			ft_printf(RED "Error\nNewline!\n");
-			exit(1);
-		}
+			return (free(map), ft_printf(RED "Error\nNewline!\n"), exit(1));
 		i++;
+	}
+}
+
+void	get_e_x_e_y(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (y < game->map_y)
+	{
+		x = 0;
+		while (x < game->map_x)
+		{
+			if (game->map[y][x] == 'E')
+			{
+				game->e_x = x;
+				game->e_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
 	}
 }
