@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:00 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 12:04:01 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 12:23:12 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,24 @@ int	enemy_move(t_game *game)
 	get_enemy(game);
 	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_two,
 		game->enemy_x * 40, game->enemy_y * 40);
+		while (i < 50000)
+		i++;
+	i = 0;
 	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_three,
 		game->enemy_x * 40, game->enemy_y * 40);
+	while (i < 50000)
+		i++;
 	i = 0;
 	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_one,
 		game->enemy_x * 40, game->enemy_y * 40);
+	while (i < 50000)
+		i++;
+	i = 0;
 	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_four,
 		game->enemy_x * 40, game->enemy_y * 40);
+	while (i < 50000)
+		i++;
+	i = 0;
 	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_five,
 		game->enemy_x * 40, game->enemy_y * 40);
 	return (0);
