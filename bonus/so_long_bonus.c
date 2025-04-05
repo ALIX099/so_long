@@ -6,64 +6,58 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:00 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 12:23:12 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 14:06:31 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	get_enemy(t_game *game)
+void	render_updated_tiles(t_game *data, int *prev_killer_frame)
 {
 	int	x;
 	int	y;
 
-	y = 0;
-	while (game->map[y])
+	if (data->killer_frame != *prev_killer_frame)
 	{
-		x = 0;
-		while (game->map[y][x])
+		y = 0;
+		while (y < data->map_y)
 		{
-			if (game->map[y][x] == 'T')
+			x = 0;
+			while (x < data->map_x)
 			{
-				game->enemy_x = x;
-				game->enemy_y = y;
-				return ;
+				if (data->map[y][x] == 'T')
+					put_in_map(data, 'T', x * 40, y * 40);
+				x++;
 			}
-			x++;
+			y++;
 		}
-		y++;
+		*prev_killer_frame = data->killer_frame;
 	}
 }
 
-int	enemy_move(t_game *game)
+int	animation_loop(t_game *game)
 {
-	int	i;
+	static int	prev_killer_frame = -1;
 
-	i = 0;
-	get_enemy(game);
-	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_two,
-		game->enemy_x * 40, game->enemy_y * 40);
-		while (i < 50000)
-		i++;
-	i = 0;
-	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_three,
-		game->enemy_x * 40, game->enemy_y * 40);
-	while (i < 50000)
-		i++;
-	i = 0;
-	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_one,
-		game->enemy_x * 40, game->enemy_y * 40);
-	while (i < 50000)
-		i++;
-	i = 0;
-	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_four,
-		game->enemy_x * 40, game->enemy_y * 40);
-	while (i < 50000)
-		i++;
-	i = 0;
-	mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_five,
-		game->enemy_x * 40, game->enemy_y * 40);
+	game->frame_count++;
+	if (game->frame_count >= 40000)
+	{
+		game->killer_frame = (game->killer_frame + 1) % 5;
+		game->frame_count = 0;
+		render_updated_tiles(game, &prev_killer_frame);
+	}
 	return (0);
+}
+void	ft_print_movements(t_game *game)
+{
+	char	*movements;
+	// char	*phrase;
+
+	movements = ft_itoa(game->move_count);
+	// ft_printf("%s %s", "Movements : ", movements);
+	mlx_string_put(game->mlx_init, game->mlx_win, 40, 20, 6000, movements);
+	// free(movements);
+	// free(phrase);
 }
 
 int	handle_destroy(t_game *game)
@@ -82,6 +76,8 @@ int	main(int ac, char **av)
 
 	w = 40;
 	h = 40;
+	game.frame_count = 0;
+	game.killer_frame = 0;
 	if (ac != 2 || !ber_parsing(av[1]))
 		return (write(2, RED "Error\nIncorrect Args Or Map File Is Wrong!\n",
 				50), 1);
@@ -92,6 +88,6 @@ int	main(int ac, char **av)
 	put_image_in_map(&game);
 	mlx_hook(game.mlx_win, 2, 1L << 0, key_code, &game);
 	mlx_hook(game.mlx_win, 17, 0, handle_destroy, &game);
-	mlx_loop_hook(game.mlx_init, enemy_move, &game);
+	mlx_loop_hook(game.mlx_init, animation_loop, &game);
 	mlx_loop(game.mlx_init);
 }

@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:04 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 11:14:33 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 13:58:22 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ typedef struct s_game
 	void	*player_up;
 	void	*player_right;
 	void	*player_left;
-	void	*enemy_one;
-	void	*enemy_two;
-	void	*enemy_three;
-	void	*enemy_four;
-	void	*enemy_five;
 	void	*coin;
 	void	*mlx_init;
 	void	*mlx_win;
@@ -66,8 +61,9 @@ typedef struct s_game
 	int		map_x;
 	int		map_y;
 	int		player_n;
-	int		enemy_x;
-	int		enemy_y;
+	void	*img_killer[5];
+	int		killer_frame;
+	int		frame_count;
 }			t_game;
 
 int			ber_parsing(char *str);
@@ -92,5 +88,6 @@ void		reach_empty_or_coin(t_game *game, int new_x, int new_y,
 				char *move_name);
 void		reach_enemy(t_game *game, int new_x, int new_y);
 int			ft_strcmp(char *s1, char *s2);
+void		ft_print_movements(t_game *game);
 
 #endif

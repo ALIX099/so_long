@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 17:08:56 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 11:16:49 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 13:23:00 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	close_window_and_free(t_game *game)
 		mlx_destroy_image(game->mlx_init, game->coin);
 	if (game->back)
 		mlx_destroy_image(game->mlx_init, game->back);
-	if (game->enemy_one)
-		mlx_destroy_image(game->mlx_init, game->enemy_one);
-	if (game->enemy_two)
-		mlx_destroy_image(game->mlx_init, game->enemy_two);
-	if (game->enemy_three)
-		mlx_destroy_image(game->mlx_init, game->enemy_three);
+	if (game->img_killer[0])
+		mlx_destroy_image(game->mlx_init, game->img_killer[0]);
+	if (game->img_killer[1])
+		mlx_destroy_image(game->mlx_init, game->img_killer[1]);
+	if (game->img_killer[2])
+		mlx_destroy_image(game->mlx_init, game->img_killer[2]);
 	if (game->wall)
 		mlx_destroy_image(game->mlx_init, game->wall);
 	if (game->exit_closed)
@@ -81,7 +81,7 @@ void	put_in_map(t_game *game, char c, int x, int y)
 		mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->back, x,
 			y);
 	else if (c == 'T')
-		mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->enemy_one,
+		mlx_put_image_to_window(game->mlx_init, game->mlx_win, game->img_killer[game->killer_frame],
 			x, y);
 }
 

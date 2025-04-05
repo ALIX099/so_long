@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 17:08:58 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 12:03:07 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/05 14:03:00 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ void	init_two(t_game *game, int w, int h)
 {
 	game->exit_opened = mlx_xpm_file_to_image(game->mlx_init,
 			"textures/opened_exit.xpm", &w, &h);
-	game->enemy_one = mlx_xpm_file_to_image(game->mlx_init,
+	game->img_killer[0] = mlx_xpm_file_to_image(game->mlx_init,
 			"textures/enemy_one.xpm", &w, &h);
-	game->enemy_two = mlx_xpm_file_to_image(game->mlx_init,
+	game->img_killer[1] = mlx_xpm_file_to_image(game->mlx_init,
 			"textures/enemy_two.xpm", &w, &h);
-	game->enemy_three = mlx_xpm_file_to_image(game->mlx_init,
+	game->img_killer[2] = mlx_xpm_file_to_image(game->mlx_init,
 			"textures/enemy_three.xpm", &w, &h);
-	game->enemy_four = mlx_xpm_file_to_image(game->mlx_init,
+	game->img_killer[3] = mlx_xpm_file_to_image(game->mlx_init,
 			"textures/enemy_four.xpm", &w, &h);
-	game->enemy_five = mlx_xpm_file_to_image(game->mlx_init,
+	game->img_killer[4] = mlx_xpm_file_to_image(game->mlx_init,
 			"textures/enemy_five.xpm", &w, &h);
-	if (!game->coin || !game->back || !game->enemy_one || !game->enemy_two
-		|| !game->enemy_three || !game->exit_closed || !game->exit_opened
+	if (!game->coin || !game->back || !game->img_killer[0] || !game->img_killer[1]
+		|| !game->img_killer[2] || !game->exit_closed || !game->exit_opened
 		|| !game->player_down || !game->player_left || !game->player_up
-		|| !game->player_right || !game->wall || !game->enemy_four
-		|| !game->enemy_five)
+		|| !game->player_right || !game->wall || !game->img_killer[3]
+		|| !game->img_killer[4])
 	{
 		close_window_and_free(game);
 		ft_printf(RED "Error\nMlx Xpm File To Image\n");
@@ -84,6 +84,7 @@ void	put_image_in_map(t_game *game)
 		}
 		y++;
 	}
+	ft_print_movements(game);
 }
 
 static void	reach_exit(t_game *game, int new_x, int new_y)
