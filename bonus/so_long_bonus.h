@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:04 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 18:39:49 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/06 11:43:00 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,57 +39,60 @@
 
 typedef struct s_game
 {
-	void	*wall;
-	void	*back;
-	void	*exit_opened;
-	void	*exit_closed;
-	void	*player_down;
-	void	*player_up;
-	void	*player_right;
-	void	*player_left;
-	void	*coin;
-	void	*mlx_init;
-	void	*mlx_win;
-	char	**map;
-	int		player_x;
-	int		e_y;
-	int		e_x;
-	int		player_y;
-	int		collectible_count;
-	int		exit_count;
-	int		move_count;
-	int		move_c;
-	int		map_x;
-	int		map_y;
-	int		player_n;
-	void	*img_killer[5];
-	int		killer_frame;
-	int		frame_count;
-}			t_game;
+	void			*wall;
+	void			*back;
+	void			*exit_opened;
+	void			*exit_closed;
+	void			*player_down;
+	void			*player_up;
+	void			*player_right;
+	void			*player_left;
+	void			*coin;
+	void			*mlx_init;
+	void			*mlx_win;
+	char			**map;
+	int				player_x;
+	int				e_y;
+	int				e_x;
+	int				player_y;
+	int				collectible_count;
+	int				exit_count;
+	int				move_count;
+	int				move_c;
+	int				map_x;
+	int				map_y;
+	int				player_n;
+	void			*img_killer[5];
+	int				killer_frame;
+	int				frame_count;
+	unsigned int	enemy_seed;
+}					t_game;
 
-int			ber_parsing(char *str);
-void		load_map(t_game *game, char *filename);
-void		check_map(t_game *game);
-int			count_splited(char **str);
-void		check_map_y(t_game *game);
-void		check_map_x(t_game *game);
-void		check_newline(char *map);
-void		check_accesses(t_game *game);
-void		get_e_x_e_y(t_game *game);
-void		init_mlx(t_game *game, int w, int h);
-void		error_handling(char *message, t_game *game);
-void		put_in_map(t_game *game, char c, int x, int y);
-void		put_image_in_map(t_game *game);
-int			key_code(int key, t_game *game);
-void		move_player(t_game *game, int x, int y, char *move_name);
-void		close_window_and_free(t_game *game);
-void		print_win_message(void);
-void		print_lose_message(void);
-int			reach_empty_or_coin(t_game *game, int new_x, int new_y,
-				char *move_name);
-void		reach_enemy(t_game *game, int new_x, int new_y);
-int			ft_strcmp(char *s1, char *s2);
-void		ft_mouve_count(t_game *game);
-int			count_chars(char **map, char c);
+int					ber_parsing(char *str);
+void				load_map(t_game *game, char *filename);
+void				check_map(t_game *game);
+int					count_splited(char **str);
+void				check_map_y(t_game *game);
+void				check_map_x(t_game *game);
+void				check_newline(char *map);
+void				check_accesses(t_game *game);
+void				get_e_x_e_y(t_game *game);
+void				init_mlx(t_game *game, int w, int h);
+void				error_handling(char *message, t_game *game);
+void				put_in_map(t_game *game, char c, int x, int y);
+void				put_image_in_map(t_game *game);
+int					key_code(int key, t_game *game);
+void				move_player(t_game *game, int x, int y, char *move_name);
+void				close_window_and_free(t_game *game);
+void				print_win_message(void);
+void				print_lose_message(void);
+int					reach_empty_or_coin(t_game *game, int new_x, int new_y,
+						char *move_name);
+void				reach_enemy(t_game *game, int new_x, int new_y);
+int					ft_strcmp(char *s1, char *s2);
+void				ft_mouve_count(t_game *game);
+int					count_chars(char **map, char c);
+void				move_enemies(t_game *game);
+void				init_enemies(t_game *game);
 
 #endif

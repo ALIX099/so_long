@@ -30,6 +30,7 @@ BSRCS = bonus/so_long_bonus.c \
         bonus/mlx/mlx_bonus.c \
         bonus/mlx/mlx_helper_bonus.c \
         bonus/mlx/mlx_helper_two_bonus.c \
+        bonus/mlx/enemy_move.c \
         $(GET_NEXT_DIR)/get_next_line.c \
         $(GET_NEXT_DIR)/get_next_line_utils.c
 

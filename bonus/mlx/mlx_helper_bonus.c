@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 17:08:56 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 18:56:05 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/06 14:04:44 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int	key_code(int key, t_game *game)
 {
 	if (key == KEY_ESC)
 		return (close_window_and_free(game),
-			ft_printf(CYAN "You Exit the Game!\n"), exit(0), 0);
+			ft_printf(CYAN "You Exit the Game!\n"), ft_printf(RESET), exit(0),
+			0);
 	else if (key == KEY_W || key == KEY_UP)
 		move_player(game, 0, -1, "UP");
 	else if (key == KEY_S || key == KEY_DOWN)
