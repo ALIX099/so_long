@@ -41,7 +41,7 @@ void	error_handling(char *message, t_game *game)
 	if (game->mlx_init)
 		free(game->mlx_init);
 	ft_printf(RED "Error\n%s\n", message);
-	ft_printf (RESET);
+	ft_printf(RESET);
 	return (split_free(game->map, count_splited(game->map)), exit(1));
 }
 
