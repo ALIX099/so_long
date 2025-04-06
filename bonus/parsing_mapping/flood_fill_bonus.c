@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 15:25:07 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 10:50:31 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/06 16:17:16 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	flood_fill(t_game *game, int x, int y)
 	if (x < 0 || y < 0 || x >= game->map_x || y >= game->map_y)
 		return ;
 	if (map[y][x] == 'Q' || map[y][x] == 'E' || map[y][x] == '1'
-		|| map[y][x] == 'V' || map[y][x] == 'D' || map[y][x] == 'T')
+		|| map[y][x] == 'V' || map[y][x] == 'D')
 		return ;
 	if (map[y][x] == '0')
 		map[y][x] = 'V';

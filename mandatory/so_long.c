@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 06:57:21 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/05 12:04:15 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/06 15:38:15 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	handle_destroy(t_game *game)
 {
 	close_window_and_free(game);
 	ft_printf(CYAN "You Exit the Game!\n");
+	ft_printf(RESET);
 	exit(0);
 	return (0);
 }
