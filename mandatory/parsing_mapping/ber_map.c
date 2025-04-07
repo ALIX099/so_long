@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:07:23 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/06 18:24:22 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/07 22:40:57 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	check_map_x(t_game *game)
 	game->map_x = ft_strlen(game->map[0]);
 	if (game->map_x > 100)
 		return (split_free(game->map, count_splited(game->map)),
-			ft_printf(RED"Error\nYou Passed the Map Limit\n"), exit(1));
+			ft_printf(RED "Error\nYou Passed the Map Limit\n"), exit(1));
 	while (i < game->map_x)
 	{
 		if (game->map[0][i] != '1' || game->map[game->map_y - 1][i] != '1')

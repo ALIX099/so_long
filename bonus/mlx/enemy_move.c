@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 09:57:25 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/06 14:01:51 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/07 22:40:46 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ void	move_enemies(t_game *game)
 	int	x;
 	int	new_x;
 
-	y = -1;
+	y = 0;
 	new_x = 0;
-	while (game->map[++y])
+	while (game->map[y])
 	{
-		x = -1;
-		while (game->map[y][++x])
+		x = 0;
+		while (game->map[y][x])
 		{
 			put_enemy_image(game, x, y, new_x);
+			x++;
 		}
+		y++;
 	}
 }
