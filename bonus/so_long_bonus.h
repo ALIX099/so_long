@@ -6,7 +6,7 @@
 /*   By: abouknan <abouknan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:19:04 by abouknan          #+#    #+#             */
-/*   Updated: 2025/04/06 11:43:00 by abouknan         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:16:06 by abouknan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,5 @@ int					ft_strcmp(char *s1, char *s2);
 void				ft_mouve_count(t_game *game);
 int					count_chars(char **map, char c);
 void				move_enemies(t_game *game);
-void				init_enemies(t_game *game);
 
 #endif
